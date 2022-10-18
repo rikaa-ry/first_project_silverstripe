@@ -32,7 +32,6 @@ class ArticleCategory extends DataObject {
 
     public function getCMSFields()
     {
-        die();
         return FieldList::create(
             TextField::create('Title')
         );

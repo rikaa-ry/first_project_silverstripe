@@ -54,6 +54,13 @@ class PropertySearchPageController extends PageController
 
         }
 
+        $filters = [
+            ['Bedrooms', 'Bedrooms', 'GreaterThanOrEqual', '%s bedrooms'],
+            ['Bathrooms', 'Bathrooms', 'GreaterThanOrEqual', '%s bathrooms'],
+            ['MinPrice', 'PricePerNight', 'GreaterThanOrEqual', 'Min. $%s'],
+            ['MaxPrice', 'PricePerNight', 'LessThanOrEqual', 'Max. $%s'],
+        ];
+
         foreach($filters as $filterKeys) {
             list($getVar, $field, $filter, $labelTemplate) = $filterKeys;
             if ($value = $request->getVar($getVar)) {
@@ -67,13 +74,6 @@ class PropertySearchPageController extends PageController
                 ]);
             }
         }
-
-        $filters = [
-            ['Bedrooms', 'Bedrooms', 'GreaterThanOrEqual', '%s bedrooms'],
-            ['Bathrooms', 'Bathrooms', 'GreaterThanOrEqual', '%s bathrooms'],
-            ['MinPrice', 'PricePerNight', 'GreaterThanOrEqual', 'Min. $%s'],
-            ['MaxPrice', 'PricePerNight', 'LessThanOrEqual', 'Max. $%s'],
-        ];
 
         // mengembalikan PaginatedList bukan DataList(lihat komentar di atas)
         $paginatedProperties = PaginatedList::create(

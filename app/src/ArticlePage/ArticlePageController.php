@@ -26,14 +26,14 @@ class ArticlePageController extends PageController
             $this, // Formulir harus dibuat oleh, dan ditangani oleh controller, controller ini yg dimaksud
             __FUNCTION__,
             // field yang menerima semua input user
-            // FieldList::create(
-            //     TextField::create('Name','')
-            //         ->setAttribute('placeholder','Name*'),
-            //     EmailField::create('Email','')
-            //         ->setAttribute('placeholder','Email*'),
-            //     TextareaField::create('Comment','')
-            //         ->setAttribute('placeholder','Comment*')
-            //     ),
+            FieldList::create(
+                TextField::create('Name','')
+                    ->setAttribute('placeholder','Name*'),
+                EmailField::create('Email','')
+                    ->setAttribute('placeholder','Email*'),
+                TextareaField::create('Comment','')
+                    ->setAttribute('placeholder','Comment*')
+                ),
             // field untuk tindakan form/action sebuah form (argumen pertama memanggil fungsi action untuk
             // submitnya), argumen dua untuk label button submitnya
             FieldList::create(

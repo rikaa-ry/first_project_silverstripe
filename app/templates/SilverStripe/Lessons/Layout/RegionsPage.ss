@@ -11,42 +11,20 @@
                 <!-- BEGIN LATEST NEWS -->
                 <h2 class="section-title">Popular articles</h2>
                 <ul class="latest-news">
+                <% loop LatestArticles(3) %>
                     <li class="col-md-12">
                         <div class="image">
                             <a href="blog-detail.html"></a>
-                            <img src="http://placehold.it/100x100" alt="" />
+                            $Photo.Fit(100,100)
                         </div>
 
                         <ul class="top-info">
-                            <li><i class="fa fa-calendar"></i> 30 July 2014</li>
+                            <li><i class="fa fa-calendar"></i> $Date.Nice </li>
                         </ul>
 
-                        <h4><a href="#">It's all about the Northeast</a></h4>
+                        <h4><a href="$Link">$Title</a></h4>
                     </li>
-                    <li class="col-md-12">
-                        <div class="image">
-                            <a href="blog-detail.html"></a>
-                            <img src="http://placehold.it/100x100" alt="" />
-                        </div>
-
-                        <ul class="top-info">
-                            <li><i class="fa fa-calendar"></i> 20 July 2014</li>
-                        </ul>
-
-                        <h4><a href="#">Southwest: Best ever</a></h4>
-                    </li>
-                    <li class="col-md-12">
-                        <div class="image">
-                            <a href="blog-detail.html"></a>
-                            <img src="http://placehold.it/100x100" alt="" />
-                        </div>
-
-                        <ul class="top-info">
-                            <li><i class="fa fa-calendar"></i> 10 July 2014</li>
-                        </ul>
-
-                        <h4><a href="#">I went to the Northwest and stole from and old lady</a></h4>
-                    </li>
+                <% end_loop %>
 
                 </ul>
                 <!-- END LATEST NEWS -->

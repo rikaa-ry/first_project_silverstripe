@@ -9,9 +9,9 @@ use SilverStripe\Forms\TextField;
 use SilverStripe\Forms\DropdownField;
 use SilverStripe\AssetAdmin\Forms\UploadField;
 // import sistem file(tabel yang mengatur mengenai file dari SS)
-// use SilverStripe\Assets\Image;
-// use SilverStripe\Assets\File;
-// use SilverStripe\Forms\CheckboxSetField;
+use SilverStripe\Assets\Image;
+use SilverStripe\Assets\File;
+use SilverStripe\Forms\CheckboxSetField;
 
 class ArticlePage extends Page
 {
