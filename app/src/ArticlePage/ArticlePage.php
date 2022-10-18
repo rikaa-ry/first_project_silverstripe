@@ -1,4 +1,4 @@
-<?php 
+<?php
 namespace SilverStripe\Lessons;
 
 use Page;
@@ -9,9 +9,9 @@ use SilverStripe\Forms\TextField;
 use SilverStripe\Forms\DropdownField;
 use SilverStripe\AssetAdmin\Forms\UploadField;
 // import sistem file(tabel yang mengatur mengenai file dari SS)
-use SilverStripe\Assets\Image;
-use SilverStripe\Assets\File;
-use SilverStripe\Forms\CheckboxSetField;
+// use SilverStripe\Assets\Image;
+// use SilverStripe\Assets\File;
+// use SilverStripe\Forms\CheckboxSetField;
 
 class ArticlePage extends Page
 {
@@ -49,7 +49,7 @@ class ArticlePage extends Page
     ];
 
     // form
-    public function getCMSFields() 
+    public function getCMSFields()
     {
         $fields = parent::getCMSFields();
         // Argumen pertama(Date, Teaser, Author) harus sesuai dengan nama field di variabel db($db)
@@ -72,7 +72,7 @@ class ArticlePage extends Page
         $fields->addFieldToTab('Root.Categories', CheckboxSetField::create(
             'Categories', // nama relasi many_many (private static many_many di atas)
             'Selected categories', // label
-            // $this->Parent()->Categories() : Kategori disimpan di ArticleHolderhalaman induk, 
+            // $this->Parent()->Categories() : Kategori disimpan di ArticleHolderhalaman induk,
             // jadi kita perlu memanggil Parent()terlebih dahulu.
 
             // ->map('ID','Title') = yang akan ditampilkan di checkbox (relasi yang disimpan pada argumen
@@ -93,7 +93,7 @@ class ArticlePage extends Page
             // cek apakah file brosur yang diupload berekstensi pdf
             ->getValidator()->setAllowedExtensions(array('pdf'));
 
-        
+
 
         return $fields;
     }

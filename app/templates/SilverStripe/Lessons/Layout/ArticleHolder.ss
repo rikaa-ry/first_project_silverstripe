@@ -4,7 +4,7 @@
 <div class="content">
 	<div class="container">
 		<div class="row">
-		
+		    <p>
 			<!-- BEGIN MAIN CONTENT -->
 			<div class="main col-sm-8" >
 				<div id="blog-listing" class="list-style clearfix">
@@ -30,7 +30,7 @@
 									<ul class="top-info">
 										<li><i class="fa fa-calendar"></i> $Date.Nice</li>
 										<li><i class="fa fa-comments-o"></i> 2</li>
-										<li><i class="fa fa-tags"></i> 
+										<li><i class="fa fa-tags"></i>
 										$CategoriesList
 										</li>
 									</ul>
@@ -47,8 +47,8 @@
 						<% end_loop %>
 					</div>
 				</div>
-				
-				
+
+
 				<!-- BEGIN PAGINATION -->
 				<% if $PaginatedArticles.MoreThanOnePage %>
 					<div class="pagination">
@@ -76,20 +76,20 @@
 					</div>
 				<% end_if %>
 				<!-- END PAGINATION -->
-			</div>	
+			</div>
 			<!-- END MAIN CONTENT -->
-			
-			
+
+
 			<!-- BEGIN SIDEBAR -->
 			<div class="sidebar gray col-sm-4">
-				
+
 				<h2 class="section-title">Categories</h2>
 				<ul class="categories">
 				<% loop $Categories %>
 					<li><a href="$Link">$Title <span>($Articles.count)</span></a></li>
 				<% end_loop %>
 				</ul>
-				
+
 				<!-- BEGIN ARCHIVES ACCORDION -->
 				<h2 class="section-title">Archives</h2>
 				<div id="accordion" class="panel-group blog-accordion">
@@ -113,20 +113,20 @@
 							</div>
 						</div>
 					</div>
-					
+
 				</div>
 				<!-- END  ARCHIVES ACCORDION -->
-				
-				
+
+
 				<h2 class="section-title">Regions</h2>
 				<ul class="categories">
 				<% loop $Regions %>
 					<li><a href="$ArticlesLink">$Title <span>($Articles.count)</span></a></li>
 				<% end_loop %>
-				
+
 				</ul>
-				
-				
+
+
 				<!-- BEGIN LATEST NEWS -->
 				<h2 class="section-title">Latest News</h2>
 				<ul class="latest-news">
@@ -135,11 +135,11 @@
 							<a href="blog-detail.html"></a>
 							<img src="http://placehold.it/100x100" alt="" />
 						</div>
-						
+
 						<ul class="top-info">
 							<li><i class="fa fa-calendar"></i> July 30, 2014</li>
 						</ul>
-							
+
 						<h3><a href="blog-detail.html">How to get your dream property for the best price?</a></h3>
 					</li>
 					<li class="col-md-12">
@@ -147,11 +147,11 @@
 							<a href="blog-detail.html"></a>
 							<img src="http://placehold.it/100x100" alt="" />
 						</div>
-						
+
 						<ul class="top-info">
 							<li><i class="fa fa-calendar"></i> July 24, 2014</li>
 						</ul>
-							
+
 						<h3><a href="blog-detail.html">7 tips to get the best mortgage.</a></h3>
 					</li>
 					<li class="col-md-12">
@@ -159,16 +159,16 @@
 							<a href="blog-detail.html"></a>
 							<img src="http://placehold.it/100x100" alt="" />
 						</div>
-						
+
 						<ul class="top-info">
 							<li><i class="fa fa-calendar"></i> July 05, 2014</li>
 						</ul>
-						
+
 						<h3><a href="blog-detail.html">House, location or price: What's the most important factor?</a></h3>
 					</li>
 				</ul>
 				<!-- END LATEST NEWS -->
-				
+
 			</div>
 			<!-- END SIDEBAR -->
 

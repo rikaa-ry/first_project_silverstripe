@@ -3,11 +3,61 @@
 <div class="content">
     <div class="container">
         <div class="row">
-        
+
+            <!-- BEGIN SIDEBAR -->
+            <div class="sidebar gray col-sm-4">
+
+
+                <!-- BEGIN LATEST NEWS -->
+                <h2 class="section-title">Popular articles</h2>
+                <ul class="latest-news">
+                    <li class="col-md-12">
+                        <div class="image">
+                            <a href="blog-detail.html"></a>
+                            <img src="http://placehold.it/100x100" alt="" />
+                        </div>
+
+                        <ul class="top-info">
+                            <li><i class="fa fa-calendar"></i> 30 July 2014</li>
+                        </ul>
+
+                        <h4><a href="#">It's all about the Northeast</a></h4>
+                    </li>
+                    <li class="col-md-12">
+                        <div class="image">
+                            <a href="blog-detail.html"></a>
+                            <img src="http://placehold.it/100x100" alt="" />
+                        </div>
+
+                        <ul class="top-info">
+                            <li><i class="fa fa-calendar"></i> 20 July 2014</li>
+                        </ul>
+
+                        <h4><a href="#">Southwest: Best ever</a></h4>
+                    </li>
+                    <li class="col-md-12">
+                        <div class="image">
+                            <a href="blog-detail.html"></a>
+                            <img src="http://placehold.it/100x100" alt="" />
+                        </div>
+
+                        <ul class="top-info">
+                            <li><i class="fa fa-calendar"></i> 10 July 2014</li>
+                        </ul>
+
+                        <h4><a href="#">I went to the Northwest and stole from and old lady</a></h4>
+                    </li>
+
+                </ul>
+                <!-- END LATEST NEWS -->
+
+            </div>
+            <!-- END SIDEBAR -->
+
             <!-- BEGIN MAIN CONTENT -->
             <div class="main col-sm-8">
-            
-                
+
+
                 <!-- BEGIN BLOG LISTING -->
                 <div class="grid-style1 clearfix">
                     <% loop $Regions %>
@@ -28,8 +78,8 @@
                     <% end_loop %>
                 </div>
                 <!-- END BLOG LISTING -->
-                
-                
+
+
                 <!-- BEGIN PAGINATION -->
                 <div class="pagination">
                     <ul id="previous">
@@ -46,60 +96,9 @@
                     </ul>
                 </div>
                 <!-- END PAGINATION -->
-                
-            </div>	
-            <!-- END MAIN CONTENT -->
-            
-            
-            <!-- BEGIN SIDEBAR -->
-            <div class="sidebar gray col-sm-4">
-            
-                
-                <!-- BEGIN LATEST NEWS -->
-                <h2 class="section-title">Popular articles</h2>
-                <ul class="latest-news">
-                    <li class="col-md-12">
-                        <div class="image">
-                            <a href="blog-detail.html"></a>
-                            <img src="http://placehold.it/100x100" alt="" />
-                        </div>
-                        
-                        <ul class="top-info">
-                            <li><i class="fa fa-calendar"></i> 30 July 2014</li>
-                        </ul>
-                            
-                        <h4><a href="#">It's all about the Northeast</a></h4>
-                    </li>
-                    <li class="col-md-12">
-                        <div class="image">
-                            <a href="blog-detail.html"></a>
-                            <img src="http://placehold.it/100x100" alt="" />
-                        </div>
-                        
-                        <ul class="top-info">
-                            <li><i class="fa fa-calendar"></i> 20 July 2014</li>
-                        </ul>
-                            
-                        <h4><a href="#">Southwest: Best ever</a></h4>
-                    </li>
-                    <li class="col-md-12">
-                        <div class="image">
-                            <a href="blog-detail.html"></a>
-                            <img src="http://placehold.it/100x100" alt="" />
-                        </div>
-                        
-                        <ul class="top-info">
-                            <li><i class="fa fa-calendar"></i> 10 July 2014</li>
-                        </ul>
-                            
-                        <h4><a href="#">I went to the Northwest and stole from and old lady</a></h4>
-                    </li>
 
-                </ul>
-                <!-- END LATEST NEWS -->
-                
             </div>
-            <!-- END SIDEBAR -->
+            <!-- END MAIN CONTENT -->
 
         </div>
     </div>

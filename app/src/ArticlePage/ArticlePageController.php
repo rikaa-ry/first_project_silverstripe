@@ -1,4 +1,4 @@
-<?php 
+<?php
 namespace SilverStripe\Lessons;
 
 use PageController;
@@ -26,15 +26,15 @@ class ArticlePageController extends PageController
             $this, // Formulir harus dibuat oleh, dan ditangani oleh controller, controller ini yg dimaksud
             __FUNCTION__,
             // field yang menerima semua input user
-            FieldList::create(
-                TextField::create('Name','')
-                    ->setAttribute('placeholder','Name*'),
-                EmailField::create('Email','')
-                    ->setAttribute('placeholder','Email*'),
-                TextareaField::create('Comment','')
-                    ->setAttribute('placeholder','Comment*')
-                ),
-            // field untuk tindakan form/action sebuah form (argumen pertama memanggil fungsi action untuk 
+            // FieldList::create(
+            //     TextField::create('Name','')
+            //         ->setAttribute('placeholder','Name*'),
+            //     EmailField::create('Email','')
+            //         ->setAttribute('placeholder','Email*'),
+            //     TextareaField::create('Comment','')
+            //         ->setAttribute('placeholder','Comment*')
+            //     ),
+            // field untuk tindakan form/action sebuah form (argumen pertama memanggil fungsi action untuk
             // submitnya), argumen dua untuk label button submitnya
             FieldList::create(
                 FormAction::create('handleComment','Post Comment')
@@ -47,7 +47,7 @@ class ArticlePageController extends PageController
 
         foreach($form->Fields() as $field) {
             $field->addExtraClass('form-control')
-                   ->setAttribute('placeholder', $field->getName().'*');            
+                   ->setAttribute('placeholder', $field->getName().'*');
         }
 
         // mendapatkan data yang diinputkan user di form
@@ -59,6 +59,7 @@ class ArticlePageController extends PageController
     // fungsi yang digunakan di function CommentForm() untuk create data di form
     public function handleComment($data, $form)
     {
+        die();
         // mendapatkan data yang diinputkan user di form
         $session = $this->getRequest()->getSession();
         $session->set("FormData.{$form->getName()}.data", $data);
@@ -72,7 +73,7 @@ class ArticlePageController extends PageController
 
             return $this->redirectBack();
         }
-        
+
         $comment = ArticleComment::create();
         $comment->ArticlePageID = $this->ID;
         $form->saveInto($comment);
@@ -87,7 +88,7 @@ class ArticlePageController extends PageController
         $to = "Papercut@user.com";
         $subject = "Email from SilverStripe";
         $email = Email::create()
-            ->setHTMLTemplate('Email\\MyCustomEmail') 
+            ->setHTMLTemplate('Email\\MyCustomEmail')
             ->setData([
                 'Member' => Security::getCurrentUser(),
                 'Link'=> $link,
@@ -105,7 +106,7 @@ class ArticlePageController extends PageController
             echo "Error";
         }
 
-        
+
 
         return $this->redirectBack();
     }

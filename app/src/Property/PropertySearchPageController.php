@@ -1,4 +1,4 @@
-<?php 
+<?php
 namespace SilverStripe\Lessons;
 
 use PageController;
@@ -27,7 +27,7 @@ class PropertySearchPageController extends PageController
         $activeFilters = ArrayList::create();
 
         // untuk emncocokkan Keywords dengan judul
-        // PartialMatch hanya memeriksa urutan karakter di bidang (tidak peka huruf besar-kecil). 
+        // PartialMatch hanya memeriksa urutan karakter di bidang (tidak peka huruf besar-kecil).
         // Itu tidak akan melakukan transformasi bahasa atau mengurai frase.
         if ($search = $request->getVar('Keywords')) {
             $activeFilters->push(ArrayData::create([
@@ -36,30 +36,23 @@ class PropertySearchPageController extends PageController
             ]));
 
             $properties = $properties->filter([
-                'Title:PartialMatch' => $search             
+                'Title:PartialMatch' => $search
             ]);
         }
 
         // membuat filter untuk AvailableStart dan AvailableEnd.
         if ($arrival = $request->getVar('ArrivalDate')) {
-            $arrivalStamp = strtotime($arrival);                        
+            $arrivalStamp = strtotime($arrival);
             $nightAdder = '+'.$request->getVar('Nights').' days';
             $startDate = date('Y-m-d', $arrivalStamp);
             $endDate = date('Y-m-d', strtotime($nightAdder, $arrivalStamp));
-        
+
             $properties = $properties->filter([
                 'AvailableStart:LessThanOrEqual' => $startDate,
                 'AvailableEnd:GreaterThanOrEqual' => $endDate
             ]);
-        
-        }
 
-        $filters = [
-            ['Bedrooms', 'Bedrooms', 'GreaterThanOrEqual', '%s bedrooms'],
-            ['Bathrooms', 'Bathrooms', 'GreaterThanOrEqual', '%s bathrooms'],
-            ['MinPrice', 'PricePerNight', 'GreaterThanOrEqual', 'Min. $%s'],
-            ['MaxPrice', 'PricePerNight', 'LessThanOrEqual', 'Max. $%s'],
-        ];
+        }
 
         foreach($filters as $filterKeys) {
             list($getVar, $field, $filter, $labelTemplate) = $filterKeys;
@@ -75,6 +68,13 @@ class PropertySearchPageController extends PageController
             }
         }
 
+        $filters = [
+            ['Bedrooms', 'Bedrooms', 'GreaterThanOrEqual', '%s bedrooms'],
+            ['Bathrooms', 'Bathrooms', 'GreaterThanOrEqual', '%s bathrooms'],
+            ['MinPrice', 'PricePerNight', 'GreaterThanOrEqual', 'Min. $%s'],
+            ['MaxPrice', 'PricePerNight', 'LessThanOrEqual', 'Max. $%s'],
+        ];
+
         // mengembalikan PaginatedList bukan DataList(lihat komentar di atas)
         $paginatedProperties = PaginatedList::create(
             $properties,
@@ -87,7 +87,7 @@ class PropertySearchPageController extends PageController
         // array data
         $data = array (
             'Results' => $paginatedProperties,
-            'ActiveFilters' => $activeFilters           
+            'ActiveFilters' => $activeFilters
         );
 
         // untuk mendeteksi Ajax(saat klik icon tanda panah pagination)
@@ -106,9 +106,9 @@ class PropertySearchPageController extends PageController
             $nights[$i] = "$i night" . (($i > 1) ? 's' : '');
         }
         $prices = [];
-        foreach(range(100, 1000, 50) as $i) {
-            $prices[$i] = '$'.$i;
-        }
+        // foreach(range(100, 1000, 50) as $i) {
+        //     $prices[$i] = '$'.$i;
+        // }
 
         $form = Form::create(
             $this, // Formulir harus dibuat oleh, dan ditangani oleh controller, controller ini yg dimaksud
@@ -118,17 +118,17 @@ class PropertySearchPageController extends PageController
                 TextField::create('Keywords')
                     ->setAttribute('placeholder', 'City, State, Country, etc...')
                     ->addExtraClass('form-control'),
-                TextField::create('ArrivalDate','Arrive on...')             
+                TextField::create('ArrivalDate','Arrive on...')
                     ->setAttribute('data-datepicker', true)
                     ->setAttribute('data-date-format', 'DD-MM-YYYY')
                     ->addExtraClass('form-control'),
-                DropdownField::create('Nights','Stay for...')                   
+                DropdownField::create('Nights','Stay for...')
                     ->setSource($nights)
                     ->addExtraClass('form-control'),
-                DropdownField::create('Bedrooms')                   
+                DropdownField::create('Bedrooms')
                     ->setSource(ArrayLib::valuekey(range(1,5)))
                     ->addExtraClass('form-control'),
-                DropdownField::create('Bathrooms')                  
+                DropdownField::create('Bathrooms')
                     ->setSource(ArrayLib::valuekey(range(1,5)))
                     ->addExtraClass('form-control'),
                 DropdownField::create('MinPrice','Min. price')
@@ -138,9 +138,9 @@ class PropertySearchPageController extends PageController
                 DropdownField::create('MaxPrice','Max. price')
                     ->setEmptyString('-- any --')
                     ->setSource($prices)
-                    ->addExtraClass('form-control')             
+                    ->addExtraClass('form-control')
             ),
-            // field untuk tindakan form/action sebuah form (argumen pertama memanggil fungsi action untuk 
+            // field untuk tindakan form/action sebuah form (argumen pertama memanggil fungsi action untuk
             // submitnya), argumen dua untuk label button submitnya
             FieldList::create(
                 FormAction::create('doPropertySearch','Search')
@@ -153,8 +153,8 @@ class PropertySearchPageController extends PageController
              // untuk memastikan formulir tidak mengirim request/datanya ke handler(doPropertySearch)
              // hanya mengarahkan ke tampilan default controller.
              ->setFormAction($this->Link())
-             // untuk menghapus token keamanan di URL(SecurityID) yang berfungsi untuk menggagalkan 
-             // serangan CSRF (Cross-Site Request Forgery), tetapi karena ini adalah GET bentuk yang 
+             // untuk menghapus token keamanan di URL(SecurityID) yang berfungsi untuk menggagalkan
+             // serangan CSRF (Cross-Site Request Forgery), tetapi karena ini adalah GET bentuk yang
              // sederhana, maka tidak memerlukannya
              ->disableSecurityToken()
              // agar data setelah disubmit untuk filter tidak hilang di formnya(session)
